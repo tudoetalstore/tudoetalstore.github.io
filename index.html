@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#11131a">
   <title>Catálogo Tudo & Tal</title>
   <link rel="icon" href="assets/icon.svg">
-  <link rel="stylesheet" href="catalogo.css?v=1">
+  <link rel="stylesheet" href="catalogo.css?v=2">
 </head>
 <body>
   <header class="catalog-top">
@@ -28,7 +28,7 @@
       <div class="hero-copy">
         <p class="eyebrow">CATÁLOGO ONLINE</p>
         <h1>Achados especiais, escolhidos para você.</h1>
-        <p>Veja o que está disponível agora na Tudo & Tal, monte sua sacola e finalize o pedido direto pelo WhatsApp.</p>
+        <p>Monte sua sacola e finalize pelo WhatsApp. Seu favorito esgotou? Entre na lista de espera para saber quando voltar.</p>
       </div>
       <div class="hero-seal"><span>♡</span><b>peças & beleza</b><small>com nova história</small></div>
     </section>
@@ -43,7 +43,7 @@
 
     <section class="catalog-section">
       <div class="catalog-heading">
-        <div><p class="eyebrow">DISPONÍVEIS AGORA</p><h2>Catálogo Tudo & Tal</h2></div>
+        <div><p class="eyebrow">ESCOLHA SEUS FAVORITOS</p><h2>Catálogo Tudo & Tal</h2></div>
         <span id="productCount">Carregando...</span>
       </div>
       <div id="catalogGrid" class="catalog-grid"></div>
@@ -106,9 +106,32 @@
     </section>
   </div>
 
-  <div id="catalogToast" class="toast"></div>
+  <div id="interestModal" class="modal-backdrop hidden">
+    <section class="checkout-card interest-card" role="dialog" aria-modal="true" aria-labelledby="interestTitle" aria-describedby="interestIntro">
+      <button id="closeInterest" class="icon-btn modal-close" type="button" aria-label="Fechar lista de espera">×</button>
+      <p class="eyebrow">SEU FAVORITO PODE VOLTAR</p>
+      <h2 id="interestTitle">Quero ser avisado</h2>
+      <div class="interest-product"><img id="interestProductPhoto" src="assets/icon.svg" alt=""><div><span class="stock-pill sold-out">Esgotado</span><strong id="interestProductName"></strong></div></div>
+      <p id="interestIntro" class="interest-intro">Deixe seu contato para a Tudo & Tal avisar quando este produto voltar. O cadastro registra interesse, sem pagamento ou reserva.</p>
+      <form id="interestForm">
+        <label>Seu nome<input id="interestName" name="name" required minlength="2" maxlength="80" autocomplete="name" placeholder="Como podemos te chamar?"></label>
+        <label>WhatsApp com DDD<input id="interestPhone" name="tel" type="tel" required maxlength="20" autocomplete="tel" inputmode="tel" placeholder="(99) 99999-9999"></label>
+        <p id="interestError" class="interest-error hidden" role="alert"></p>
+        <button id="registerInterestButton" class="primary wide" type="submit">Entrar na lista de espera</button>
+        <p class="privacy-note">Ao entrar, você autoriza a Tudo & Tal a avisar pelo WhatsApp sobre a reposição deste produto. Seu contato fica somente com a equipe da loja.</p>
+      </form>
+      <div id="interestSuccess" class="interest-success hidden" role="status" tabindex="-1">
+        <div class="success-icon">✓</div>
+        <h3>Você está na lista!</h3>
+        <p>Seu interesse foi registrado. A equipe da Tudo & Tal poderá te avisar pelo WhatsApp quando houver reposição.</p>
+        <button id="backFromInterest" class="secondary wide" type="button">Voltar ao catálogo</button>
+      </div>
+    </section>
+  </div>
+
+  <div id="catalogToast" class="toast" role="status"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="catalogo.js?v=1"></script>
+  <script src="catalogo.js?v=2"></script>
 </body>
 </html>
