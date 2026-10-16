@@ -6,13 +6,13 @@
   <meta name="theme-color" content="#11131a">
   <title>Catálogo Tudo & Tal</title>
   <link rel="icon" href="assets/icon.svg">
-  <link rel="stylesheet" href="catalogo.css?v=3">
+  <link rel="stylesheet" href="catalogo.css?v=4">
 </head>
 <body>
   <header class="catalog-top">
     <a class="catalog-brand" href="./" aria-label="Tudo & Tal">
       <img src="assets/icon.svg" alt="">
-      <div><strong>Tudo & Tal</strong><span>Moda • Beleza • Segunda vida</span></div>
+      <div><strong>Tudo & Tal</strong><span>Moda • Cosméticos • Segunda vida</span></div>
     </a>
     <button id="cartButton" class="cart-button" type="button" aria-label="Abrir sacola">
       <svg class="bag-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -30,20 +30,22 @@
         <h1>Achados especiais, escolhidos para você.</h1>
         <p>Monte sua sacola e finalize pelo WhatsApp. Seu favorito esgotou? Entre na lista de espera para saber quando voltar.</p>
       </div>
-      <div class="hero-seal"><span>♡</span><b>peças & beleza</b><small>com nova história</small></div>
+      <div class="hero-seal"><span>♡</span><b>moda & cuidados</b><small>com nova história</small></div>
     </section>
 
     <nav id="catalogSections" class="catalog-sections" aria-label="Áreas do catálogo">
-      <button type="button" data-section="loja" class="active" aria-pressed="true">Loja <small>Beleza e outros achados</small></button>
-      <button type="button" data-section="vestuario" aria-pressed="false">Vestuário &amp; Brechó <small>Peças à venda e doações</small></button>
+      <button type="button" data-section="loja" aria-pressed="false">Cuidado pessoal e achadinhos <small>Skincare, cosméticos, perfumes e cabelo</small></button>
+      <button type="button" data-section="vestuario" aria-pressed="false">Vestuário &amp; Brechó <small>Novos, usados e doações</small></button>
     </nav>
     <section id="clothingTools" class="clothing-tools hidden" aria-label="Filtros de vestuário">
       <div id="clothingOffers" class="clothing-offers">
-        <button type="button" data-offer="sale" class="active" aria-pressed="true">À venda</button>
+        <button type="button" data-offer="all" class="active" aria-pressed="true">Todos</button>
+        <button type="button" data-offer="sale" aria-pressed="false">À venda</button>
         <button type="button" data-offer="donation" aria-pressed="false">Doações · grátis</button>
       </div>
       <p id="clothingIntro">Peças com novas histórias. Encontre seu público e tamanho.</p>
       <div class="clothing-filters">
+        <label>Condição<select id="conditionFilter"><option value="">Todos</option><option value="novo">Novos</option><option value="como_novo">Usados como novos</option><option value="usado">Usados</option></select></label>
         <label>Público<select id="ageFilter"><option value="">Todos</option><option value="adulto">Adulto</option><option value="infantil">Infantil</option></select></label>
         <label>Modelo<select id="genderFilter"><option value="">Todos</option><option value="feminino">Feminino</option><option value="masculino">Masculino</option><option value="unissex">Unissex</option></select></label>
         <label>Tamanho<select id="sizeFilter"><option value="">Todos</option></select></label>
@@ -166,6 +168,7 @@
   <div id="catalogToast" class="toast" role="status"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="catalogo.js?v=3"></script>
+  <script src="product-groups.js?v=1"></script>
+  <script src="catalogo.js?v=4"></script>
 </body>
 </html>
