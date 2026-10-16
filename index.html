@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#11131a">
   <title>Catálogo Tudo & Tal</title>
   <link rel="icon" href="assets/icon.svg">
-  <link rel="stylesheet" href="catalogo.css?v=2">
+  <link rel="stylesheet" href="catalogo.css?v=3">
 </head>
 <body>
   <header class="catalog-top">
@@ -33,6 +33,23 @@
       <div class="hero-seal"><span>♡</span><b>peças & beleza</b><small>com nova história</small></div>
     </section>
 
+    <nav id="catalogSections" class="catalog-sections" aria-label="Áreas do catálogo">
+      <button type="button" data-section="loja" class="active" aria-pressed="true">Loja <small>Beleza e outros achados</small></button>
+      <button type="button" data-section="vestuario" aria-pressed="false">Vestuário &amp; Brechó <small>Peças à venda e doações</small></button>
+    </nav>
+    <section id="clothingTools" class="clothing-tools hidden" aria-label="Filtros de vestuário">
+      <div id="clothingOffers" class="clothing-offers">
+        <button type="button" data-offer="sale" class="active" aria-pressed="true">À venda</button>
+        <button type="button" data-offer="donation" aria-pressed="false">Doações · grátis</button>
+      </div>
+      <p id="clothingIntro">Peças com novas histórias. Encontre seu público e tamanho.</p>
+      <div class="clothing-filters">
+        <label>Público<select id="ageFilter"><option value="">Todos</option><option value="adulto">Adulto</option><option value="infantil">Infantil</option></select></label>
+        <label>Modelo<select id="genderFilter"><option value="">Todos</option><option value="feminino">Feminino</option><option value="masculino">Masculino</option><option value="unissex">Unissex</option></select></label>
+        <label>Tamanho<select id="sizeFilter"><option value="">Todos</option></select></label>
+        <button id="clearClothingFilters" class="clear-filters" type="button">Limpar filtros</button>
+      </div>
+    </section>
     <section class="catalog-tools">
       <div class="search-wrap">
         <span>⌕</span>
@@ -43,8 +60,8 @@
 
     <section class="catalog-section">
       <div class="catalog-heading">
-        <div><p class="eyebrow">ESCOLHA SEUS FAVORITOS</p><h2>Catálogo Tudo & Tal</h2></div>
-        <span id="productCount">Carregando...</span>
+        <div><p class="eyebrow">ESCOLHA SEUS FAVORITOS</p><h2 id="catalogTitle">Catálogo Tudo & Tal</h2></div>
+        <span id="productCount" role="status">Carregando...</span>
       </div>
       <div id="catalogGrid" class="catalog-grid"></div>
     </section>
@@ -129,9 +146,26 @@
     </section>
   </div>
 
+  <div id="donationModal" class="modal-backdrop hidden">
+    <section class="checkout-card" role="dialog" aria-modal="true" aria-labelledby="donationTitle" aria-describedby="donationIntro">
+      <button id="closeDonation" class="icon-btn modal-close" type="button" aria-label="Fechar retirada grátis">×</button>
+      <p class="eyebrow">UMA NOVA HISTÓRIA</p>
+      <h2 id="donationTitle">Quero retirar grátis</h2>
+      <div class="interest-product"><img id="donationProductPhoto" src="assets/icon.svg" alt=""><div><span class="donation-pill">Doação · grátis</span><strong id="donationProductName"></strong></div></div>
+      <p id="donationIntro" class="interest-intro">Reserve esta peça por 24 horas e combine o horário de retirada na loja pelo WhatsApp. É grátis, sem necessidade de comprar. Uma unidade por solicitação.</p>
+      <form id="donationForm">
+        <label>Seu nome<input id="donationName" required minlength="2" maxlength="80" autocomplete="name" placeholder="Como podemos te chamar?"></label>
+        <label>WhatsApp com DDD<input id="donationPhone" type="tel" required maxlength="20" autocomplete="tel" placeholder="(99) 99999-9999"></label>
+        <label>Observação <small>(opcional)</small><textarea id="donationNotes" maxlength="500" rows="2" placeholder="Ex.: consigo buscar amanhã pela manhã."></textarea></label>
+        <p id="donationError" class="interest-error hidden" role="alert"></p>
+        <button id="reserveDonationButton" class="primary donation-action wide" type="submit">Reservar para retirada grátis</button>
+        <p class="privacy-note">Seu contato fica somente com a equipe para combinar esta retirada.</p>
+      </form>
+    </section>
+  </div>
   <div id="catalogToast" class="toast" role="status"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="catalogo.js?v=2"></script>
+  <script src="catalogo.js?v=3"></script>
 </body>
 </html>
