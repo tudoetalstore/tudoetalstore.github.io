@@ -1,0 +1,1 @@
+{"private":true,"scripts":{"test":"node catalog-theme-ui.cjs"},"devDependencies":{"jsdom":"27.0.0"}}
