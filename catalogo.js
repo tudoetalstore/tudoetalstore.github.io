@@ -229,7 +229,9 @@ async function init(){
   $("#catalogSearch").addEventListener("input",e=>{S.query=e.target.value;renderProducts()});
   await Promise.all([loadConfig(),loadProducts()]);
   document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")loadProducts()});
-  setInterval(()=>{if(document.visibilityState==="visible")loadProducts()},30000);
+  window.addEventListener("focus",()=>loadProducts());
+  window.addEventListener("pageshow",()=>loadProducts());
+  setInterval(()=>{if(document.visibilityState==="visible")loadProducts()},5000);
 }
 document.addEventListener("DOMContentLoaded",init);
 
